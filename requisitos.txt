@@ -1,0 +1,29 @@
+Parte 1
+Precisamos criar uma API de gerenciamento de tarefas para disponibilizar para nossa equipe de front.
+
+Requisitos:
+- A API deve ser REST
+- Cada pessoa terá um id, nome, departamento e  lista de tarefas
+- Cada tarefa terá id, título, descrição, prazo, departamento, duração, pessoa alocada e se já foi finalizado.
+
+Funcionalidades desejadas:
+
+- Adicionar um pessoa (post/pessoas) - done
+
+- Alterar um pessoa (put/pessoas/{id}) - done
+
+- Remover pessoa (delete/pessoas/{id}) - done
+
+- Adicionar um tarefa (post/tarefas) - done
+
+- Alocar uma pessoa na tarefa que tenha o mesmo departamento (put/tarefas/alocar/{id}) - done
+
+- Finalizar a tarefa (put/tarefas/finalizar/{id}) - done
+
+- Listar pessoas trazendo nome, departamento, total horas gastas nas tarefas.(get/pessoas) -done
+
+- Buscar pessoas por nome e período, retorna média de horas gastas por tarefa. (get/pessoas/gastos) - done
+
+- Listar 3 tarefas que estejam sem pessoa alocada com os prazos mais antigos. (get/tarefas/pendentes) - done
+
+- Listar departamento e quantidade de pessoas e tarefas (get/departamentos)
