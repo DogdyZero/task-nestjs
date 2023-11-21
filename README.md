@@ -24,7 +24,7 @@
 
 ## Description
 
-This application using nest.js, type orm and postgresql as database
+This application using nest.js (typescript), typeorm and postgresql as database
 
 ## Installation
 
@@ -33,14 +33,18 @@ $ npm install
 ```
 
 ## Configure .env
+```
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=yourdbname
 DB_USERNAME=yourdbusername
 DB_PASSWORD=yourpassowrd
+```
 
 ## Running migrations
-npm run typeorm migration:run
+```bash
+$ npm run typeorm migration:run
+```
 
 ## Running the app
 
