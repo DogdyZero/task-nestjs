@@ -9,7 +9,7 @@ export class EmployeeController {
     constructor(private readonly employeeService: EmployeeService) { }
 
     @Get()
-    listAll(){
+    listAll() {
         return this.employeeService.findAll()
     }
 
@@ -17,8 +17,8 @@ export class EmployeeController {
     listAnSumByTask() {
         return this.employeeService.findAndSumByTask()
     }
-   
-    @Get('spending')
+
+    @Get('spend')
     spending(@Query() query: SpendingQuery) {
         return this.employeeService.spending(query)
     }
