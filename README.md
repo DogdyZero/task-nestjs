@@ -24,13 +24,23 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This application using nest.js, type orm and postgresql as database
 
 ## Installation
 
 ```bash
 $ npm install
 ```
+
+## Configure .env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=yourdbname
+DB_USERNAME=yourdbusername
+DB_PASSWORD=yourpassowrd
+
+## Running migrations
+npm run typeorm migration:run
 
 ## Running the app
 
@@ -43,19 +53,6 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
