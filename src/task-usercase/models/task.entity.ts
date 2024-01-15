@@ -5,18 +5,18 @@ import { EmployeeEntity } from "./employee.entity";
 @Entity("task")
 export class TaskEntity {
 
-    @PrimaryGeneratedColumn()
-    id:number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
     @Column()
-    title:string;
+    title: string;
     @Column()
-    description:string;
+    description: string;
     @Column()
-    deadline:Date;
+    deadline: Date;
     @Column()
-    duration:number;
+    duration: number;
     @Column()
-    finished:boolean;
+    finished: boolean;
     @ManyToOne(() => DepartamentEntity, (departament) => departament.task)
     @JoinColumn({ name: "departament_id" })
     departament: DepartamentEntity

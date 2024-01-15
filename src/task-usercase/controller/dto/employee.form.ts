@@ -1,8 +1,10 @@
-import { IsNotEmpty, IsNumber} from 'class-validator';
+import { IsNotEmpty, IsUUID} from 'class-validator';
 
 export class EmployeeForm {
     @IsNotEmpty()
     name: string;
-    @IsNumber()
-    departament: number
+    @IsUUID()
+    departament: string;
+    @IsNotEmpty()
+    user: string;
 }

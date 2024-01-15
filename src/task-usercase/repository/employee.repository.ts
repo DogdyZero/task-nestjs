@@ -16,7 +16,7 @@ export class EmployeeRepository {
         return this.repository.save(employee)
     }
 
-    update(employee: EmployeeEntity, id: number) {
+    update(employee: EmployeeEntity, id: string) {
         return this.repository.update(id, employee);
     }
 
@@ -42,7 +42,7 @@ export class EmployeeRepository {
             .createQueryBuilder("employee")
             .select("employee.name", "employee")
             .addSelect("departament.name", "departament")
-            .addSelect("sum(task.duration)", "duration")
+            .addSelect("sum(task.duration)", "sum")
             .innerJoin("employee.departament", "departament")
             .innerJoin("employee.task", "task")
             .groupBy("employee.name, departament.name")
@@ -70,7 +70,7 @@ export class EmployeeRepository {
             .createQueryBuilder("employee")
             .select("employee.name", "employee")
             .addSelect("departament.name", "departament")
-            .addSelect("round(avg(task.duration),2)", "duration")
+            .addSelect("round(avg(task.duration),2)", "avg")
             .innerJoin("employee.departament", "departament")
             .innerJoin("employee.task", "task")
             .where(finalQuery, params)

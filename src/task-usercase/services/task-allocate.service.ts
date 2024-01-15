@@ -11,7 +11,7 @@ export class TaskAllocateService {
         private readonly employeeRepository: EmployeeRepository
     ) { }
 
-    async allocate(id: number, employeeId: number) {
+    async allocate(id: string, employeeId: string) {
         const employee = await this.employeeRepository.findOneWithDepartament({ id: employeeId })
         const task = await this.repository.findOneWithDepartament({ id })
         let message = null

@@ -15,7 +15,7 @@ export class TaskRepository {
         return this.repository.save(entity)
     }
 
-    update(entity: TaskEntity, id: number) {
+    update(entity: TaskEntity, id: string) {
         return this.repository.update(id, entity);
     }
 
@@ -23,7 +23,7 @@ export class TaskRepository {
         return this.repository.find();
     }
     findOne(where = {}): Promise<TaskEntity> {
-        return this.repository.findOne({ where: { ...where } })
+        return this.repository.findOne({ where: { ...where }, relations: { employee: true } })
     }
     findOneWithDepartament(where = {}): Promise<TaskEntity> {
         return this.repository.findOne(

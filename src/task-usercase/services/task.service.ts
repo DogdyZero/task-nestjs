@@ -17,7 +17,7 @@ export class TaskService {
         return await this.repository.findAll();
     }
 
-    async findOne(id: number) {
+    async findOne(id: string) {
         return await this.repository.findOne({ id });
     }
 
@@ -36,17 +36,17 @@ export class TaskService {
         return await this.repository.insert(entity);
     }
 
-    async finishTask(id: number) {
+    async finishTask(id: string) {
         const entity = await this.findOne(id)
         if (!entity) throw new NotFoundException(`Task (${id}) not found`)
-
+        
         if (!entity.employee)
             return { message: `Not Allowed to finish the task (${entity.title}) due to no employee allocate!` }
         entity.finished = true;
         return await this.repository.update(entity, id)
     }
 
-    allocate(id: number, employeeId: number) {
+    allocate(id: string, employeeId: string) {
         return this.taskAllocateService.allocate(id, employeeId)
     }
 

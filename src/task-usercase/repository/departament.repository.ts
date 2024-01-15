@@ -10,7 +10,7 @@ export class DepartamentRepository {
         private readonly repository: Repository<DepartamentEntity>
     ) { }
 
-    async findOne(id: number): Promise<DepartamentEntity> {
+    async findOne(id: string): Promise<DepartamentEntity> {
         const departament = await this.repository.findOneBy({ id });
         if (!departament) {
             throw new Error(`Departament ${id} not found!`)
@@ -27,6 +27,10 @@ export class DepartamentRepository {
             .leftJoin("task.employee", "employee")
             .groupBy("departament.name")
             .getRawMany()
+    }
+
+    insert(departament: DepartamentEntity): Promise<DepartamentEntity> {
+        return this.repository.save(departament)
     }
 
 }

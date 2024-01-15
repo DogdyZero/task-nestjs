@@ -1,34 +1,40 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { EmployeeEntity } from "./models/employee.entity";
-import { EmployeeController } from "./controller/employee.controller";
-import { DepartamentEntity } from "./models/departament.entity";
-import { TaskEntity } from "./models/task.entity";
-import { EmployeeService } from "./services/employee.service";
-import { EmployeeRepository } from "./repository/employee.repository";
-import { EmployeeMapper } from "./services/employee.mapper";
-import { TaskService } from "./services/task.service";
-import { DepartamentRepository } from "./repository/departament.repository";
-import { TaskRepository } from "./repository/task.repository";
-import { TaskController } from "./controller/task.controller";
-import { DepartamentService } from "./services/departament.service";
+
+import { AuthenticationModule } from "src/security/Authentication.module";
 import { DepartamentControlller } from "./controller/departament.controller";
+import { EmployeeController } from "./controller/employee.controller";
+import { TaskController } from "./controller/task.controller";
+import { DepartamentEntity } from "./models/departament.entity";
+import { EmployeeEntity } from "./models/employee.entity";
+import { TaskEntity } from "./models/task.entity";
+import { DepartamentRepository } from "./repository/departament.repository";
+import { EmployeeRepository } from "./repository/employee.repository";
+import { TaskRepository } from "./repository/task.repository";
+import { DepartamentService } from "./services/departament.service";
+import { EmployeeMapper } from "./services/employee.mapper";
+import { EmployeeService } from "./services/employee.service";
 import { TaskAllocateService } from "./services/task-allocate.service";
+import { TaskService } from "./services/task.service";
+import { UserEntity } from "src/security/models/user.entity";
+
 
 @Module({
     imports: [
+        AuthenticationModule,
         TypeOrmModule.forFeature(
             [
+                UserEntity,
                 DepartamentEntity,
                 EmployeeEntity,
-                TaskEntity
+                TaskEntity,
             ]
         ),
     ],
     controllers: [
         DepartamentControlller,
         EmployeeController,
-        TaskController
+        TaskController,
     ],
     providers: [
         DepartamentService,
@@ -39,6 +45,6 @@ import { TaskAllocateService } from "./services/task-allocate.service";
         TaskService,
         TaskRepository,
         TaskAllocateService
-    ]
+    ],
 })
 export class TaskCrudModule { }

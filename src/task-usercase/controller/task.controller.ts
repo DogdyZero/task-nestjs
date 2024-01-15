@@ -1,40 +1,49 @@
-import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put, UseGuards } from "@nestjs/common";
 import { TaskForm } from "./dto/task.form";
 import { TaskService } from "../services/task.service";
 import { TaskAllocateForm } from "./dto/task-allocate.form";
+import { AuthenticationGuard } from "../../security/service/authentication.guard";
+import { Roles } from "src/security/dto/roles.decorator";
 
 @Controller('/tasks')
+@UseGuards(AuthenticationGuard)
 export class TaskController {
 
     constructor(private readonly service: TaskService) { }
 
     @Get()
+    @Roles(['admin'])
     list() {
         return this.service.find()
     }
     @Get('pendents')
+    @Roles(['admin'])
     listOlderTasks(){
         return this.service.list3OlderTasksWithNoOneAllocate();
     }
 
     @Get('/:id')
-    getOne(@Param('id') id: number) {
+    @Roles(['admin'])
+    getOne(@Param('id') id: string) {
         return this.service.findOne(id)
     }
 
     @Post()
+    @Roles(['admin'])
     add(@Body() form: TaskForm) {
         return this.service.create(form)
     }
 
     @Put('allocate/:id')
-    allocate(@Body() form: TaskAllocateForm, @Param('id') id: number) {
+    @Roles(['admin'])
+    allocate(@Body() form: TaskAllocateForm, @Param('id') id: string) {
         const employeeId = form.employeeId
         return this.service.allocate(id, employeeId)
     }
 
     @Put('finish/:id')
-    finishTask(@Param('id') id: number) {
+    @Roles(['admin'])
+    finishTask(@Param('id') id: string) {
         return this.service.finishTask(id)
     }
 

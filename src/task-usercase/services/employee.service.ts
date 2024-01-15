@@ -19,7 +19,7 @@ export class EmployeeService {
         return await this.repository.findAndSumByTask();
     }
 
-    async findOne(id: number) {
+    async findOne(id: string) {
         return await this.repository.findOne({ id });
     }
 
@@ -32,7 +32,7 @@ export class EmployeeService {
         return await this.repository.insert(employee);
     }
 
-    async update(form: EmployeeForm, id: number) {
+    async update(form: EmployeeForm, id: string) {
         const employee = await this.mapper.toEntity(form)
         return await this.repository.update(employee, id)
     }

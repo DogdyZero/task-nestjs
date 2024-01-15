@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsNotEmpty, IsNumber, IsOptional, IsDate } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsDate, IsUUID } from 'class-validator';
 import { toDate } from '../../../common/helper/cast.helper'
 
 export class TaskForm {
@@ -12,6 +12,6 @@ export class TaskForm {
     deadline: Date
     @IsNumber()
     duration: number
-    @IsNumber()
-    departament: number
+    @IsUUID()
+    departament: string
 }
