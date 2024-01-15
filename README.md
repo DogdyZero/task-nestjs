@@ -36,9 +36,10 @@ $ npm install
 ```
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=yourdbname
-DB_USERNAME=yourdbusername
-DB_PASSWORD=yourpassowrd
+DB_NAME=your_db_name
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_db_password
+JWT_SECRET=long_secretkey
 ```
 
 ## Running migrations
